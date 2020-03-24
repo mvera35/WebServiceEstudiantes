@@ -15,26 +15,54 @@ const sequelize = new Sequelize(
     }
   });
 //Definimos los campos del curso
-const Curso = sequelize.define('curso',{
+const Curso = sequelize.define('cursos',{
   clave: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    unique: true
+    primaryKey: true,
+    onDelete: 'CASCADE',
   },
   nombre: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   creditos: {
     type: Sequelize.INTEGER,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 //Aquí se declaran los campos del modelo
 class e extends Curso {}
 e.init({},{sequelize});
 
+const Lista = sequelize.define('lista',{
+  clave: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    references: {
+      model: 'cursos',
+      key: 'clave'
+    }
+  },
+  matricula: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    references: {
+      model: 'estudiantes',
+      key: 'matricula'
+    }
+  }
+});
+class l extends Lista {}
+l.init({},{sequelize});
+
+Curso.sync({force: false})
+.then(()=>{
+  Lista.sync({force: false})
+});
+
 //Exportamos las constantes
 exports.Curso = Curso;
+exports.Lista = Lista;
 exports.Sequelize = Sequelize;
 exports.sequelize = sequelize;

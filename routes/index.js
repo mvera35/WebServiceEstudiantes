@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const estudiantesController =
+require('../controllers/estudiantesController');
+
 const cursosController =
 require('../controllers/cursosController');
 
 router.use(express.json());
+
 
 router.post('/cursos', cursosController.create);
 router.get('/cursos', cursosController.findAll);

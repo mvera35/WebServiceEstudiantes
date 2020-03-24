@@ -17,12 +17,12 @@ const sequelize = new Sequelize(
 
 //Definimos los campos del estudiante
 const Estudiante =
-sequelize.define('estudiante',{
+sequelize.define('estudiantes',{
   //atributos
   matricula: {
     type: Sequelize.INTEGER,
-    allowNull: false,
-    unique: true
+    primaryKey: true,
+    onDelete: 'CASCADE',
   },
   aPaterno:{
     type: Sequelize.STRING,
@@ -49,6 +49,9 @@ sequelize.define('estudiante',{
 //Aquí se declaran los campos del modelo
 class e extends Estudiante {}
 e.init({},{sequelize});
+
+Estudiante.sync({force: false});
+
 
 //Exportamos las constantes
 exports.Estudiante = Estudiante;
