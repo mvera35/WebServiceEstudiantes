@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const modelo = require('../models/cursosModel.js');
+const modelo2 = require('../models/estudiantesCursosModel.js');
 //Mediante Sequelize podremos conectarnos a la base de datos
 const sequelize = new Sequelize(
   'escolar',//nombre de la base de datos
@@ -50,8 +52,14 @@ sequelize.define('estudiantes',{
 class e extends Estudiante {}
 e.init({},{sequelize});
 
-Estudiante.sync({force: false});
+Estudiante.associate = function(models){
+  Estudiante.belongsToMany(models.Curso,{
+    through: models.Lista,
+  });
+  return Estudiante;
+};
 
+Estudiante.sync({force: false});
 
 //Exportamos las constantes
 exports.Estudiante = Estudiante;

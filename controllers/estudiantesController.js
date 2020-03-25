@@ -13,7 +13,7 @@ exports.create = function(req,res){
     aMaterno: estudiante.aMaterno,
     nombre: estudiante.nombre,
     semestreIngreso: estudiante.semestreIngreso,
-    creditosCursados: curso.creditosCursados
+    creditosCursados: estudiante.creditosCursados
   })
   .then(()=>{//En caso que se complete la ejecución
     res.status(201).send("La petición ha sido completada");
@@ -53,7 +53,7 @@ exports.deleteAll = function(req,res){
   });
 }
 
-exports.deleteByClave = function(req,res){
+exports.deleteByMatricula = function(req,res){
   Estudiante.destroy({
     where: {matricula: req.params.id}
   })//Ejecutamos el query
@@ -69,7 +69,7 @@ exports.deleteByClave = function(req,res){
 }
 
 //Función para obtener un estudiante en base a su clave
-exports.findByClave = function(req,res){
+exports.findByMatricula = function(req,res){
   Estudiante.findOne({//Ejecutamos el query
     where: {matricula: req.params.id}//matrícula del estudiante a buscar
   })

@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const modelo = require('../models/estudiantesModel.js');
+const modelo2 = require('../models/estudiantesCursosModel.js');
 //Mediante Sequelize podremos conectarnos a la base de datos
 const sequelize = new Sequelize(
   'escolar',//nombre de la base de datos
@@ -6,13 +8,13 @@ const sequelize = new Sequelize(
   'superpassword',//contraseña
   {
     host: 'localhost',
-    dialect: 'mysql',//Indicamos que el dialecto es mysql
     define:{
       /*Aquí eliminamos unos valores por defecto en el modelo Curso,
       es decir, evitamos que aparezcan campos no indicados a la hora
       de crear una tabla*/
       timestamps: false
-    }
+    },
+    dialect: 'mysql',//Indicamos que el dialecto es mysql
   });
 //Definimos los campos del curso
 const Curso = sequelize.define('cursos',{
@@ -35,6 +37,12 @@ const Curso = sequelize.define('cursos',{
 class e extends Curso {}
 e.init({},{sequelize});
 
+Curso.associate = function(models){
+  Curso.belongsToMany(models.Estudiante,{
+    through: models.Lista,
+  });
+  return Curso;
+};
 const Lista = sequelize.define('lista',{
   clave: {
     type: Sequelize.INTEGER,
@@ -58,7 +66,7 @@ l.init({},{sequelize});
 
 Curso.sync({force: false})
 .then(()=>{
-  Lista.sync({force: false})
+  Lista.sync({force: false});
 });
 
 //Exportamos las constantes
