@@ -3,6 +3,7 @@ const express = require('../node_modules/express');
 const modeloE = require('../models/estudiantesModel.js');
 const Estudiante = modeloE.Estudiante;
 const Curso = modelo.Curso;
+const Lista = modelo.Lista;
 //const Lista = modelo.Lista;
 const app = express();
 app.use(express.json());
@@ -135,18 +136,13 @@ exports.deleteEstudianteLista = function(req,res){
 
 exports.getLista = function(req,res){
   let estudiante =[];
+  let aux = {};
   Lista.findAll({
-    where:{clave: req.params.id}
+    where:{clave: req.params.id},
+    attributes: ['matricula']
   })
   .then(matriculas =>{
-    while(matriculas.length > 0){
-      Estudiante.findOne({
-        where:{matricula: matriculas.shift.matricula}
-      })
-      .then(dato=>{
-        console.log(dato.nombre);
-      });
-    }
+    res.status(200).send(matriculas);
   })
   .catch(()=>{//En caso que no se complete la ejecución
     res.status(400).send('Petición no generada');
@@ -154,4 +150,5 @@ exports.getLista = function(req,res){
   .finally(()=>{
     res.end();
   });
+
 }

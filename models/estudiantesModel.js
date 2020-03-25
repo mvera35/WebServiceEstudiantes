@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const modelo = require('../models/cursosModel.js');
-const modelo2 = require('../models/estudiantesCursosModel.js');
 //Mediante Sequelize podremos conectarnos a la base de datos
 const sequelize = new Sequelize(
   'escolar',//nombre de la base de datos
