@@ -1,0 +1,363 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+# Added by API Auto Mocking Plugin
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/mvera35/wsREST/1.0.0
+ 
+info:
+  description: Un API que permite manipular los datos de estudiantes/alumnos y cursos al igual que el registro de los alumnos en los cursos como las listas de los cursos.
+  version: "1.0.0"
+  title: Manejo de estudiantes y cursos API
+  contact:
+    email: mvera35@uabc.edu.mx
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  /estudiantes:
+    get:
+      description: Obtener la información de los estudiantes
+      responses:
+        200:
+          description: Operación realizada con exito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Estudiante"
+        404:
+          description: recurso no encontrado
+    
+    post:
+      description: Crear un nuevo estudiante en la base de datos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Estudiante"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+      
+    delete:
+      description: Borrar toda la información de los alumnos registrados
+      responses:
+        200:
+          description: Operación realizada con exito
+        400:
+          description: Petición no generada
+          
+  /estudiantes/:id:  
+    get:
+      description: Obtener la información de un estudiante en base a su matrícula
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Estudiante"
+        404:
+          description: recurso no encontrado  
+    
+    put:
+      description: Actualizar los datos de un estudiante en la base de datos
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Estudiante"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+  
+    patch:
+      description: Actualizar los datos de un estudiante en la base de datos
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Estudiante"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+          
+    delete:
+      description: Borrar toda la información del alumno registrado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operación realizada con exito
+        400:
+          description: Petición no generada
+    
+  /cursos:
+    get:
+      description: Obtener la información de los cursos registrados
+      responses:
+        200:
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Curso"
+        404:
+          description: recurso no encontrado
+    
+    post:
+      description: Crear un nuevo curso en la base de datos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Curso"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+      
+    delete:
+      description: Borrar toda la información de los cursos registrados
+      responses:
+        200:
+          description: Operación realizada con éxito
+        400:
+          description: Petición no generada
+          
+  
+  /cursos/:id:
+    get:
+      description: Obtener la información de un curso en base a su clave
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la clave del curso
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Curso"
+        404:
+          description: recurso no encontrado  
+    
+    put:
+      description: Actualizar los datos de un curso en la base de datos
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la clave del curso
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Curso"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+  
+    patch:
+      description: Actualizar los datos de un curso en la base de datos
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la clave del curso
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Curso"
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+          
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la clave del curso
+          schema:
+            type: integer
+      description: Borrar toda la información de un curso registrado
+      responses:
+        200:
+          description: Operación realizada con éxito
+        400:
+          description: Petición no generada
+         
+  /estudiantes/:id/inscribir/:idcurso:
+    post:
+      description: Inscribir un alumno/estudiante a un curso
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+        - in: path
+          name: idcurso
+          required: true
+          description: idcurso significa la clave del curso en el que queremos inscribir al alumno
+          schema:
+            type: integer
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+    
+    delete:
+      description: eliminar un alumno/estudiante de un curso
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          description: id significa la matrícula del alumno/estudiante
+          schema:
+            type: integer
+        - in: path
+          name: idcurso
+          required: true
+          description: idcurso significa la clave del curso
+          schema:
+            type: integer
+      responses:
+        201:
+          description: La petición ha sido completada
+        400:
+          description: Petición no generada
+          
+  /cursos/:id/lista:
+    get:
+      description: Obtener la lista de un curso en base a su clave
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id significa la clave del curso
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Estudiante"
+        404:
+          description: recurso no encontrado   
+      
+components:
+  schemas:
+    Estudiante:
+      description: modelo que representa la información de un alumno/estudiante
+      type: object
+      properties:
+      
+        matricula:
+          description: matrícula única que identifica al alumno/estudiante
+          type: integer
+          example: 1158482
+        
+        aPaterno:
+          description: apellido paterno del alumno/estudiante
+          type: string
+          example: Perez
+          
+        aMaterno:
+          description: apellido materno del alumno/estudiante
+          type: string
+          example: Martinez
+        
+        nombre:
+          description: nombre(s) del alumno/estudiante
+          type: string
+          example: Miguel Ángel
+        
+        semestre:
+          description: semestre que ingresó el alumno/estudiante
+          type: integer
+          example: 3
+        
+        creditos:
+          description: créditos cursados por el alumno/estudiantes
+          type: integer
+          example: 100
+    
+    Curso:
+      description: modelo que representa la información de un curso 
+      type: object
+      properties:
+        
+        clave:
+          description: clave única que identifica al curso
+          type: integer
+          example: 0000
+        
+        nombre:
+          description: nombre del curso
+          type: string
+          example: JavaScript para clientes y servidores
+        
+        creditos:
+          description: creditos que otorga el curso
+          type: integer
+          example: 6
