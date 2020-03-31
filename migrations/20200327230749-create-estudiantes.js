@@ -8,19 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      aMaterno: {
+      aPaterno: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      aPaterno: {
+      aMaterno: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       nombre: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       semestreIngreso: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       creditosCursados: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {

@@ -13,7 +13,9 @@ exports.create = function(req,res){
   Curso.create({//Ejecutamos el query
     clave: curso.clave,
     nombre: curso.nombre,
-    creditos: curso.creditos
+    creditos: curso.creditos,
+    createdAt: new Date(),
+    updatedAt: new Date()
   })
   .then(()=>{//En caso que se complete la ejecución
     res.status(201).send("La petición ha sido completada");

@@ -13,7 +13,9 @@ exports.create = function(req,res){
     aMaterno: estudiante.aMaterno,
     nombre: estudiante.nombre,
     semestreIngreso: estudiante.semestreIngreso,
-    creditosCursados: estudiante.creditosCursados
+    creditosCursados: estudiante.creditosCursados,
+    createdAt: new Date(),
+    updatedAt: new Date()
   })
   .then(()=>{//En caso que se complete la ejecución
     res.status(201).send("La petición ha sido completada");
