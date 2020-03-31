@@ -1,6 +1,6 @@
-const modelo = require('../models/estudiantesModel.js');
+const modelo = require('../models');
 const express = require('../node_modules/express');
-const Estudiante = modelo.Estudiante;
+const Estudiante = modelo.Estudiantes;
 const app = express();
 app.use(express.json());
 

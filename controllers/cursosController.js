@@ -1,9 +1,8 @@
-const modelo = require('../models/cursosModel.js');
 const express = require('../node_modules/express');
-const modeloE = require('../models/estudiantesModel.js');
-const Estudiante = modeloE.Estudiante;
-const Curso = modelo.Curso;
-const Lista = modelo.Lista;
+const modelo = require('../models');
+const Estudiante = modelo.Estudiantes;
+const Curso = modelo.Cursos;
+const Lista = modelo.CursosEstudiantes;
 //const Lista = modelo.Lista;
 const app = express();
 app.use(express.json());
@@ -135,7 +134,7 @@ exports.deleteEstudianteLista = function(req,res){
 }
 
 exports.getLista = function(req,res){
-  let estudiante =[];
+  let estudiante =[];models;
   let aux = {};
   Lista.findAll({
     where:{clave: req.params.id},

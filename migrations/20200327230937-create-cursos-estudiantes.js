@@ -1,16 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('cursoEstudiantes', {
-      claveCurso: {
+    return queryInterface.createTable('CursosEstudiantes', {
+      clave_curso: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Cursos",
+          key: "clave"
+        }
       },
-      matricula: {
+      matricula_estudiante: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Estudiantes",
+          key: "matricula"
+        }
       },
       createdAt: {
         allowNull: false,
@@ -23,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('cursoEstudiantes');
+    return queryInterface.dropTable('CursosEstudiantes');
   }
 };
