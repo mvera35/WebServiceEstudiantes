@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Servicio Estudiantes</title>
+    <link rel="stylesheet" href="estilo.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>Estudiantes</h1>
+      <table id="estudiantes" cellspacing="10" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Nombre(s)</th>
+            <th>Semestre Ingreso</th>
+            <th>Creditos Cursados</th>
+          </tr>
+          <tr v-for="(estudiante) in estudiantes">
+            <td>{{ estudiante.matricula }}</td>
+            <td>{{ estudiante.aPaterno }}</td>
+            <td>{{ estudiante.aMaterno }}</td>
+            <td>{{ estudiante.nombre }}</td>
+            <td>{{ estudiante.semestreIngreso }}</td>
+            <td>{{ estudiante.creditosCursados }}</td>
+          </tr>
+        </thead>
+      </table>
+      </div>
+
+      <div id="cursos">
+        <h1>Cursos</h1>
+        <table cellspacing="10" cellpadding="10">
+          <tr>
+            <th>Clave</th>
+            <th>Nombre</th>
+            <th>Creditos</th>
+          </tr>
+          <tr v-for="(curso) in cursos">
+            <td>{{ curso.clave }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.creditos }}</td>
+          </tr>
+        </table>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

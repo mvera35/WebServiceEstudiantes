@@ -12,6 +12,26 @@ module.exports = {
           creditosCursados: 212,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          matricula: 115888,
+          aPaterno: "Vera",
+          aMaterno: "Perez",
+          nombre: "Maximiliano",
+          semestreIngreso: 2,
+          creditosCursados: 152,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          matricula: 1147012,
+          aPaterno: "Perez",
+          aMaterno: "Martinez",
+          nombre: "Miguel",
+          semestreIngreso: 5,
+          creditosCursados: 12,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },

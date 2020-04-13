@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = 4000;
 const router = require('./routes/index');
+const cors = require('./.gitignore/node_modules/cors');
 
+app.use(cors());
 app.use(router);
 
 app.listen(port, () => {

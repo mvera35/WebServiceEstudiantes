@@ -1,0 +1,18 @@
+body{
+  background-color: rgba(80, 75, 70, 0.19);
+}
+
+table{
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.06);
+  width: 80%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+h1{
+  text-align: center;
+}
+th,td{
+  border: solid 2px;
+}
