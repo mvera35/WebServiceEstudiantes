@@ -1,4 +1,4 @@
-const express = require('../node_modules/express');
+const express = require('../.gitignore/node_modules/express');
 const modelo = require('../models');
 const Estudiante = modelo.Estudiantes;
 const Curso = modelo.Cursos;

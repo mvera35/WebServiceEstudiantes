@@ -1,5 +1,5 @@
 const modelo = require('../models');
-const express = require('../node_modules/express');
+const express = require('../.gitignore/node_modules/express');
 const Estudiante = modelo.Estudiantes;
 const app = express();
 app.use(express.json());
