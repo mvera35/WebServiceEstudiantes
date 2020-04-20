@@ -136,16 +136,16 @@ exports.deleteEstudianteLista = function(req,res){
 }
 
 exports.getLista = function(req,res){
-  let estudiante =[];models;
+  let estudiante =[];
   let aux = {};
   Lista.findAll({
-    where:{clave: req.params.id},
-    attributes: ['matricula']
+    where:{clave_curso: req.params.id},
+    attributes: ['clave_curso','matricula_estudiante']
   })
   .then(matriculas =>{
     res.status(200).send(matriculas);
   })
-  .catch(()=>{//En caso que no se complete la ejecución
+  .catch(error=>{//En caso que no se complete la ejecución
     res.status(400).send('Petición no generada');
   })
   .finally(()=>{

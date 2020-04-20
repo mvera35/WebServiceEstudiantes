@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Servicio Estudiantes</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="estilo.css">
   </head>
   <body>
@@ -17,6 +19,7 @@
             <th>Nombre(s)</th>
             <th>Semestre Ingreso</th>
             <th>Creditos Cursados</th>
+            <th>Cursos Inscritos</th>
           </tr>
           <tr v-for="(estudiante) in estudiantes">
             <td>{{ estudiante.matricula }}</td>
@@ -25,6 +28,10 @@
             <td>{{ estudiante.nombre }}</td>
             <td>{{ estudiante.semestreIngreso }}</td>
             <td>{{ estudiante.creditosCursados }}</td>
+            <td>
+              <p v-for= "(cursos) in estudiante.cursos">
+                {{ cursos }}
+              </p> </td>
           </tr>
         </thead>
       </table>
@@ -35,11 +42,16 @@
             <th>Clave</th>
             <th>Nombre</th>
             <th>Creditos</th>
+            <th>Estudiantes</th>
           </tr>
           <tr v-for="(curso) in cursos">
             <td>{{ curso.clave }}</td>
             <td>{{ curso.nombre }}</td>
             <td>{{ curso.creditos }}</td>
+            <td>
+              <p v-for= "(estudiantes) in curso.estudiantes">
+                {{ estudiantes }}
+              </p> </td>
           </tr>
         </table>
       </div>
