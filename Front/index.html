@@ -3,58 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Servicio Estudiantes</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>
     <div id="app">
-      <h1>Estudiantes</h1>
-      <table id="estudiantes" cellspacing="10" cellpadding="10">
-        <thead>
-          <tr>
-            <th>Matrícula</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Nombre(s)</th>
-            <th>Semestre Ingreso</th>
-            <th>Creditos Cursados</th>
-            <th>Cursos Inscritos</th>
-          </tr>
-          <tr v-for="(estudiante) in estudiantes">
-            <td>{{ estudiante.matricula }}</td>
-            <td>{{ estudiante.aPaterno }}</td>
-            <td>{{ estudiante.aMaterno }}</td>
-            <td>{{ estudiante.nombre }}</td>
-            <td>{{ estudiante.semestreIngreso }}</td>
-            <td>{{ estudiante.creditosCursados }}</td>
-            <td>
-              <p v-for= "(cursos) in estudiante.cursos">
-                {{ cursos }}
-              </p> </td>
-          </tr>
-        </thead>
-      </table>
-
-        <h1>Cursos</h1>
-        <table cellspacing="10" cellpadding="10">
-          <tr>
-            <th>Clave</th>
-            <th>Nombre</th>
-            <th>Creditos</th>
-            <th>Estudiantes</th>
-          </tr>
-          <tr v-for="(curso) in cursos">
-            <td>{{ curso.clave }}</td>
-            <td>{{ curso.nombre }}</td>
-            <td>{{ curso.creditos }}</td>
-            <td>
-              <p v-for= "(estudiantes) in curso.estudiantes">
-                {{ estudiantes }}
-              </p> </td>
-          </tr>
-        </table>
+      <div class="container">
+        <tablas></tablas>
+        <div style="text-align: center">
+          <br>
+          <button class="btn btn-primary" @click="alerta=true">Salir</button>
+        </div>
       </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>

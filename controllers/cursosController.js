@@ -106,8 +106,10 @@ exports.update = function(req,res){
 
 exports.inscribir = function(req,res){
   Lista.create({
-    clave: req.params.idcurso,
-    matricula: req.params.id
+    clave_curso: req.params.idcurso,
+    matricula_estudiante: req.params.id,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   })
   .then(()=>{//En caso que se complete la ejecución
     res.status(201).send("La petición ha sido completada");
@@ -122,7 +124,7 @@ exports.inscribir = function(req,res){
 
 exports.deleteEstudianteLista = function(req,res){
   Lista.destroy({
-    where: {clave: req.params.idcurso,matricula:req.params.id}
+    where: {clave_curso: req.params.idcurso,matricula_estudiante:req.params.id}
   })//Ejecutamos el query
   .then(()=>{//En caso que se complete la ejecución
     res.status(200).send('Operación realizada con éxito');

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Estudiantes.associate = function(models) {
     // associations can be defined here
-    Estudiantes.belongsToMany(models.Cursos,{through: models.CursosEstudiantes});
+    //Estudiantes.belongsToMany(models.Cursos,{through: models.CursosEstudiantes});
   };
   return Estudiantes;
 };
